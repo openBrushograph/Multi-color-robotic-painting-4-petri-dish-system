@@ -184,6 +184,34 @@ header{
   transition:background .15s}
 .viz-close:hover{background:rgba(255,107,53,.22)}
 
+/* ── Tutti Frutti ── */
+.badge-tf{
+  display:inline-block;font-family:var(--sans);font-size:.55rem;letter-spacing:.1em;
+  text-transform:uppercase;padding:2px 7px;border-radius:2px;margin-left:8px;
+  vertical-align:middle;font-weight:700;
+  background:linear-gradient(90deg,#ff6b6b22,#ffd16622,#3dd6c822,#b06aff22);
+  border:1px solid rgba(255,209,102,.25);
+  color:#ffd166;
+}
+.tf-desc{
+  font-family:var(--sans);font-size:.68rem;color:var(--muted);
+  line-height:1.5;margin-bottom:12px;letter-spacing:.02em;
+}
+.tf-dishes-label{
+  font-family:var(--sans);font-size:.57rem;color:var(--muted);
+  letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px;margin-top:2px;
+}
+.tf-dish-list{display:flex;flex-direction:column;gap:4px}
+.tf-dish-item{
+  display:flex;align-items:center;gap:8px;
+  font-family:var(--sans);font-size:.7rem;color:var(--label);
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:3px;padding:5px 8px;
+}
+.tf-dish-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.tf-dish-name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tf-dish-coords{font-family:var(--mono);font-size:.6rem;color:var(--muted)}
+
 @media(max-width:860px){
   .workspace{grid-template-columns:1fr;height:auto}
   .sidebar{border-left:none;border-top:1px solid var(--border)}
@@ -241,12 +269,12 @@ header{
     <div class="ss">
       <div class="sec">Canvas</div>
       <div class="cg">
-        <div class="f"><label>Target Width (mm)</label><input type="number" id="g_target_width" value="1070" step="1"></div>
-        <div class="f"><label>Resolution (px/mm)</label><input type="number" id="g_res" value="1.0" step="0.5" min="0.5" max="4"></div>
-        <div class="f"><label>Brush Width (mm)</label><input type="number" id="g_brush_w" value="1.6" step="0.1"></div>
+        <div class="f"><label>Target Width (mm)</label><input type="number" id="g_target_width" value="150" step="1"></div>
+        <div class="f"><label>Resolution (px/mm)</label><input type="number" id="g_res" value="4.0" step="0.5" min="0.5" max="4"></div>
+        <div class="f"><label>Brush Width (mm)</label><input type="number" id="g_brush_w" value="1.1" step="0.1"></div>
         <div class="f"><label>Overlap</label><input type="number" id="g_overlap" value="0.15" step="0.01"></div>
-        <div class="f"><label>X Offset (mm)</label><input type="number" id="g_x_off" value="263" step="1"></div>
-        <div class="f"><label>Y Offset (mm)</label><input type="number" id="g_y_off" value="266" step="1"></div>
+        <div class="f"><label>X Offset (mm)</label><input type="number" id="g_x_off" value="0" step="1"></div>
+        <div class="f"><label>Y Offset (mm)</label><input type="number" id="g_y_off" value="29" step="1"></div>
       </div>
     </div>
 
@@ -254,31 +282,31 @@ header{
       <div class="sec">Z Heights (mm)</div>
       <div class="cg">
         <div class="f"><label>Z Paint</label><input type="number" id="g_z_paint" value="0.0" step="0.1"></div>
-        <div class="f"><label>Z Low</label><input type="number" id="g_z_low" value="4.6" step="0.1"></div>
-        <div class="f"><label>Z High</label><input type="number" id="g_z_high" value="31.0" step="0.5"></div>
-        <div class="f"><label>Z Wipe Exit</label><input type="number" id="g_z_wipe_exit" value="16.0" step="0.5"></div>
-        <div class="f"><label>Dip Z</label><input type="number" id="g_dip_z" value="0.0" step="0.1"></div>
+        <div class="f"><label>Z Low</label><input type="number" id="g_z_low" value="2.0" step="0.1"></div>
+        <div class="f"><label>Z High</label><input type="number" id="g_z_high" value="8.0" step="0.5"></div>
+        <div class="f"><label>Z Wipe Exit</label><input type="number" id="g_z_wipe_exit" value="3.0" step="0.5"></div>
+        <div class="f"><label>Dip Z</label><input type="number" id="g_dip_z" value="1.0" step="0.1"></div>
       </div>
     </div>
 
     <div class="ss">
       <div class="sec">Dip Parameters</div>
       <div class="cg">
-        <div class="f"><label>Min Dist (mm)</label><input type="number" id="g_min_dist" value="240" step="5"></div>
-        <div class="f"><label>Max Dist (mm)</label><input type="number" id="g_max_dist" value="280" step="5"></div>
-        <div class="f"><label>Jitter</label><input type="number" id="g_dip_jitter" value="20" step="1"></div>
+        <div class="f"><label>Min Dist (mm)</label><input type="number" id="g_min_dist" value="80" step="5"></div>
+        <div class="f"><label>Max Dist (mm)</label><input type="number" id="g_max_dist" value="100" step="5"></div>
+        <div class="f"><label>Jitter</label><input type="number" id="g_dip_jitter" value="7" step="1"></div>
         <div class="f"><label>Spiral Loops</label><input type="number" id="g_dip_spiral_loops" value="1.0" step="0.5"></div>
-        <div class="f"><label>Spiral Radius</label><input type="number" id="g_dip_spiral_r" value="50" step="5"></div>
-        <div class="f"><label>Wipe Radius</label><input type="number" id="g_wipe_r" value="70" step="5"></div>
+        <div class="f"><label>Spiral Radius</label><input type="number" id="g_dip_spiral_r" value="7" step="5"></div>
+        <div class="f"><label>Wipe Radius</label><input type="number" id="g_wipe_r" value="20" step="16"></div>
       </div>
     </div>
 
     <div class="ss">
       <div class="sec">Speed &amp; Acceleration</div>
       <div class="cg">
-        <div class="f"><label>Feed Travel</label><input type="number" id="g_feed" value="12000" step="500"></div>
-        <div class="f"><label>Feed Paint</label><input type="number" id="g_feed_paint" value="400" step="50"></div>
-        <div class="f"><label>Accel Travel</label><input type="number" id="g_accel_travel" value="12000" step="500"></div>
+        <div class="f"><label>Feed Travel</label><input type="number" id="g_feed" value="1300" step="500"></div>
+        <div class="f"><label>Feed Paint</label><input type="number" id="g_feed_paint" value="600" step="50"></div>
+        <div class="f"><label>Accel Travel</label><input type="number" id="g_accel_travel" value="600" step="500"></div>
         <div class="f"><label>Accel Paint</label><input type="number" id="g_accel_paint" value="200" step="50"></div>
       </div>
     </div>
@@ -288,9 +316,9 @@ header{
       <div class="sec">Working Area Limits <span class="badge">Clamp</span></div>
       <div class="cg" style="margin-bottom:8px">
         <div class="f"><label>Min X (mm)</label><input type="number" id="g_area_min_x" value="0" step="1"></div>
-        <div class="f"><label>Max X (mm)</label><input type="number" id="g_area_max_x" value="1400" step="10"></div>
+        <div class="f"><label>Max X (mm)</label><input type="number" id="g_area_max_x" value="150" step="10"></div>
         <div class="f"><label>Min Y (mm)</label><input type="number" id="g_area_min_y" value="0" step="1"></div>
-        <div class="f"><label>Max Y (mm)</label><input type="number" id="g_area_max_y" value="1400" step="10"></div>
+        <div class="f"><label>Max Y (mm)</label><input type="number" id="g_area_max_y" value="150" step="10"></div>
       </div>
       <div class="ftog">
         <input type="checkbox" id="g_area_enabled" checked>
@@ -307,9 +335,31 @@ header{
       </div>
       <div class="cg">
         <div class="f"><label>BL X (mm)</label><input type="number" id="g_bl_x" value="0.5" step="0.05"></div>
-        <div class="f"><label>BL Y (mm)</label><input type="number" id="g_bl_y" value="1.6" step="0.05"></div>
+        <div class="f"><label>BL Y (mm)</label><input type="number" id="g_bl_y" value="0.9" step="0.05"></div>
         <div class="f"><label>Threshold (mm)</label><input type="number" id="g_bl_threshold" value="0.05" step="0.01"></div>
         <div class="f"><label>Safe Feed (mm/min)</label><input type="number" id="g_bl_safe_feed" value="200" step="10"></div>
+      </div>
+    </div>
+
+    <!-- ── TUTTI FRUTTI ── -->
+    <div class="ss" id="tfSection">
+      <div class="sec">Tutti Frutti Mode <span class="badge-tf">&#x1F3A8; SURPRISE</span></div>
+      <div class="tf-desc">Randomly switches petri dishes while painting — each dip picks a surprise color from all active layers.</div>
+      <div class="ftog" style="margin-bottom:12px">
+        <input type="checkbox" id="g_tf_enabled" onchange="onTFToggle()">
+        <label for="g_tf_enabled">Enable tutti frutti random dipping</label>
+      </div>
+      <div id="tfParams" style="opacity:.35;pointer-events:none">
+        <div class="cg" style="margin-bottom:8px">
+          <div class="f"><label>Min Stroke (mm)</label><input type="number" id="g_tf_min" value="40" step="10" min="10"></div>
+          <div class="f"><label>Max Stroke (mm)</label><input type="number" id="g_tf_max" value="80" step="10" min="10"></div>
+        </div>
+        <div class="ftog" style="margin-bottom:8px">
+          <input type="checkbox" id="g_tf_no_repeat" checked>
+          <label for="g_tf_no_repeat">Never same color twice in a row</label>
+        </div>
+        <div class="tf-dishes-label">Dishes in pool (enabled layers):</div>
+        <div class="tf-dish-list" id="tfDishList"></div>
       </div>
     </div>
 
@@ -670,7 +720,12 @@ class UltraPainter {
     this.bl_off_y  = 0.0;
     this.bl_log_x  = cfg.dip_x;
     this.bl_log_y  = cfg.dip_y;
-    this.bl_feed   = cfg.feed_paint;  // tracks current active feed
+    this.bl_feed   = cfg.feed_paint;
+
+    // Tutti Frutti state
+    // tf_dishes: [{x, y, name, color}] — set before calling run()
+    this.tf_dishes      = cfg.tf_dishes || [];
+    this.tf_current_idx = -1;   // index of currently loaded dish
   }
 
   // ── Clamp a coordinate to working area (always >= 0) ──
@@ -709,6 +764,7 @@ class UltraPainter {
           );
           lines.push(`; --- Backlash X fix: ${(nd===1?c.bl_x:-c.bl_x).toFixed(3)}mm ---`);
           lines.push(`G0 X${f(fx)} Y${f(fy)} F${c.bl_safe_feed}`);
+          lines.push(`G1 F${this.bl_feed}`);  // restore feedrate clobbered by G0 F
         }
         this.bl_dir_x = nd;
       }
@@ -724,6 +780,7 @@ class UltraPainter {
           );
           lines.push(`; --- Backlash Y fix: ${(nd===1?c.bl_y:-c.bl_y).toFixed(3)}mm ---`);
           lines.push(`G0 X${f(fx)} Y${f(fy)} F${c.bl_safe_feed}`);
+          lines.push(`G1 F${this.bl_feed}`);  // restore feedrate clobbered by G0 F
         }
         this.bl_dir_y = nd;
       }
@@ -748,18 +805,38 @@ class UltraPainter {
     const c = this.c;
     const ac = m === 'travel' ? c.accel_travel : c.accel_paint;
     const f  = m === 'travel' ? c.feed         : c.feed_paint;
+    this.bl_feed = f;   // keep in sync so backlash correction can restore it
     this.gc.push('M400', `M204 P${ac} T${ac}`, `G1 F${f}`);
   }
 
   _dip(tx, ty) {
     const c = this.c, f = n => n.toFixed(3);
-    // Clamp jittered dip approach — jitter can push near-zero dip_x negative
+
+    // ── Tutti Frutti: pick a random dish ──
+    let dish_x = c.dip_x, dish_y = c.dip_y, dish_name = null;
+    if (c.tf_enabled && this.tf_dishes.length > 0) {
+      let pool = this.tf_dishes;
+      // Optionally exclude the currently loaded dish to force a color change
+      if (c.tf_no_repeat && pool.length > 1) {
+        pool = pool.filter((_, i) => i !== this.tf_current_idx);
+      }
+      const pick = Math.floor(Math.random() * pool.length);
+      const dish = pool[pick];
+      // Find real index in full tf_dishes array (for no-repeat tracking)
+      this.tf_current_idx = this.tf_dishes.indexOf(dish);
+      dish_x = dish.x; dish_y = dish.y; dish_name = dish.name;
+    }
+
+    // Clamp jittered dip approach
     const [ax, ay] = this._clamp(
-      c.dip_x + (Math.random() * 2 - 1) * c.dip_jitter,
-      c.dip_y + (Math.random() * 2 - 1) * c.dip_jitter
+      dish_x + (Math.random() * 2 - 1) * c.dip_jitter,
+      dish_y + (Math.random() * 2 - 1) * c.dip_jitter
     );
 
-    this.gc.push('\n; --- CIKEL NAMAKANJA ---', `G0 Z${f(c.z_low)} F3000`);
+    const dipLabel = dish_name
+      ? `; --- DIP → ${dish_name} ---`
+      : '; --- CIKEL NAMAKANJA ---';
+    this.gc.push(`\n${dipLabel}`, `G0 Z${f(c.z_low)} F3000`);
     this._spd('travel');
     this.gc.push(`G0 X${f(ax)} Y${f(ay)} Z${f(c.z_high)}`, `G1 Z${f(c.dip_z)} F3000`);
 
@@ -771,13 +848,13 @@ class UltraPainter {
       this.gc.push(`G1 X${f(sx)} Y${f(sy)} F2500`);
     }
 
-    // Clamp wipe exit point — most common source of negative: dip_x=66, wipe_r=70 → 66-70=-4
-    const ddx = tx - c.dip_x, ddy = ty - c.dip_y, dd = Math.hypot(ddx, ddy);
-    const rawWx = dd > 0 ? c.dip_x + ddx / dd * c.wipe_r : c.dip_x + c.wipe_r;
-    const rawWy = dd > 0 ? c.dip_y + ddy / dd * c.wipe_r : c.dip_y;
+    // Clamp wipe exit — direction from dish toward paint target
+    const ddx = tx - dish_x, ddy = ty - dish_y, dd = Math.hypot(ddx, ddy);
+    const rawWx = dd > 0 ? dish_x + ddx / dd * c.wipe_r : dish_x + c.wipe_r;
+    const rawWy = dd > 0 ? dish_y + ddy / dd * c.wipe_r : dish_y;
     const [wx, wy] = this._clamp(rawWx, rawWy);
 
-    // Clamp final target coordinate too
+    // Clamp final target
     const [ftx, fty] = this._clamp(tx, ty);
 
     this.gc.push(
@@ -785,7 +862,10 @@ class UltraPainter {
       `G0 Z${f(c.z_high)} F3000`, `G0 X${f(ftx)} Y${f(fty)} Z${f(c.z_low)}`
     );
     this.dd = 0;
-    this.md = c.min_dist + Math.random() * (c.max_dist - c.min_dist);
+    // TF uses its own min/max stroke length; normal mode uses global dip distance
+    const mn = c.tf_enabled ? c.tf_min : c.min_dist;
+    const mx = c.tf_enabled ? c.tf_max : c.max_dist;
+    this.md = mn + Math.random() * (mx - mn);
     this.pos = [ftx, fty];
   }
 
@@ -834,7 +914,7 @@ class UltraPainter {
 
 const COLORS = ['#ff6b6b','#3dd6c8','#ffd166','#b06aff'];
 const NAMES  = ['Color 1 — Red','Color 2 — Teal','Color 3 — Yellow','Color 4 — Purple'];
-const DIPS   = [{x:66,y:862},{x:66,y:700},{x:66,y:538},{x:66,y:376}];
+const DIPS   = [{x:15,y:0},{x:59,y:0},{x:106,y:0},{x:156,y:0}];
 
 const state = Array.from({length:4}, (_, i) => ({
   name: NAMES[i], enabled: true,
@@ -930,6 +1010,34 @@ function updatePills() {
       style="background:${COLORS[i]};${s.enabled ? `box-shadow:0 0 6px ${COLORS[i]}` : ''}"
       title="${s.name}"></div>`
   ).join('');
+  updateTFDishList();
+}
+
+// ── TUTTI FRUTTI UI ──
+function onTFToggle() {
+  const on = document.getElementById('g_tf_enabled').checked;
+  const params = document.getElementById('tfParams');
+  params.style.opacity = on ? '1' : '.35';
+  params.style.pointerEvents = on ? 'auto' : 'none';
+  updateTFDishList();
+}
+
+function updateTFDishList() {
+  const el = document.getElementById('tfDishList');
+  if (!el) return;
+  const active = state.filter(s => s.enabled);
+  if (!active.length) {
+    el.innerHTML = `<div style="font-family:var(--sans);font-size:.65rem;color:var(--muted);padding:4px 0">No active layers</div>`;
+    return;
+  }
+  el.innerHTML = active.map(s => {
+    const i = state.indexOf(s);
+    return `<div class="tf-dish-item">
+      <div class="tf-dish-dot" style="background:${COLORS[i]};box-shadow:0 0 5px ${COLORS[i]}80"></div>
+      <div class="tf-dish-name">${s.name}</div>
+      <div class="tf-dish-coords">${s.dip_x}, ${s.dip_y}</div>
+    </div>`;
+  }).join('');
 }
 
 function toggleLayer(i, v) {
@@ -982,6 +1090,11 @@ function gcfg() {
     bl_y:         g('bl_y'),
     bl_threshold: g('bl_threshold') || 0.05,
     bl_safe_feed: gi('bl_safe_feed') || 200,
+    // Tutti Frutti
+    tf_enabled:   gb('tf_enabled'),
+    tf_min:       g('tf_min') || 80,
+    tf_max:       g('tf_max') || 200,
+    tf_no_repeat: gb('tf_no_repeat'),
   };
 }
 
@@ -1018,12 +1131,18 @@ async function generate() {
   lastGenData = [];
   lastGenCfg  = global;
 
+  // Build Tutti Frutti dish pool from all enabled layers
+  const tf_dishes = state
+    .filter(s => s.enabled)
+    .map((s, _i, _arr) => ({ x: s.dip_x, y: s.dip_y, name: s.name, color: COLORS[state.indexOf(s)] }));
+
   const combined = [
     'G90', 'G21',
     '; === MULTI-COLOR PAINTER GCODE ===',
     `; Generated layers: ${activeLayers.length}`,
     `; Backlash compensation: ${global.bl_enabled ? `ON  BX=${global.bl_x} BY=${global.bl_y}` : 'OFF'}`,
     `; Working area clamping: ${global.area_enabled ? `ON  X[${global.area_min_x}–${global.area_max_x}] Y[${global.area_min_y}–${global.area_max_y}]` : 'OFF'}`,
+    `; Tutti Frutti mode: ${global.tf_enabled ? `ON  stroke ${global.tf_min}–${global.tf_max}mm  dishes: ${tf_dishes.map(d=>d.name).join(', ')}` : 'OFF'}`,
     ''
   ];
 
@@ -1045,7 +1164,8 @@ async function generate() {
         dip_x: s.dip_x, dip_y: s.dip_y,
         infill_type: s.infill_type, infill_angle: s.infill_angle,
         outline_only: s.outline_only,
-        brush_w: s.brush_w !== null ? s.brush_w : global.brush_w
+        brush_w: s.brush_w !== null ? s.brush_w : global.brush_w,
+        tf_dishes   // pass full dish pool to painter
       };
 
       setst(`Layer ${i+1} / ${activeLayers.length}: loading image…`, '');
